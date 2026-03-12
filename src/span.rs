@@ -1,12 +1,22 @@
-#[derive(Default, Debug, Copy, Clone, PartialEq, Eq)]
-pub struct Span(usize, usize);
+use crate::position::Position;
+
+#[derive(Eq, PartialEq, Clone, Copy, Debug)]
+#[rustfmt::skip]
+pub struct Span {
+    start: Position,
+    end:   Position,
+}
 
 impl Span {
-    pub fn start(&self) -> usize {
-        self.0
+    pub fn new(start: Position, end: Position) -> Span {
+        Span { start, end }
     }
 
-    pub fn end(&self) -> usize {
-        self.1
+    pub fn start(&self) -> Position {
+        self.start
+    }
+
+    pub fn end(&self) -> Position {
+        self.end
     }
 }
